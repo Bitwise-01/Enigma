@@ -5,7 +5,7 @@ Encryption Software
 It's used for decrypting. Save the key or memorize it, because without it you can't decrypt the message
 
 # Rules
-1) you can either read from a file (-f filname) or process a text (-m text), but not but at once.
+1) you can either read from a file (-f filname) or process a text (-m text), but not both at once.
 
 2) the program will only run if it has something to encrypt or decrypt (--lock or --unlock), if you don't add those your file or text will not get processed
 
