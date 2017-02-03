@@ -46,4 +46,4 @@ python Enigma.py -f filename --unlock 45
 python Enigma.py -f filename -o locked_file --lock 56
   
 # Read File, Decrypt & Save:
-python Enigma.py -f filename -o unlocked_file --unlock 45
+python Enigma.py -f filename -o unlocked_file --unlock 56
