@@ -37,20 +37,21 @@ def process_text(text):
    if output:
     write(output,encrypt(text))
    else:
-    print '\n{}\n'.format(encrypt(text))
+    print ('\n{}\n'.format(encrypt(text)))
 
   if _decrypt:
    if output:
     write(output,decrypt(text))
    else:
-    print '\n{}\n'.format(decrypt(text))
+    print ('\n{}\n'.format(decrypt(text)))
 
 def read_file():
   with open(_file,'r') as reader:
    for line in reader:
     text = []
     for item in line:
-     if item == ' ': text.append(' ')
+     if item == ' ': text.append(' ');continue
+     if item == '\n':text.append('\n');continue
      if not str(item).lower() in alpha:
       continue
      if _encrypt:
@@ -60,7 +61,7 @@ def read_file():
     if output:
      write(output,'{} '.format(''.join(text)))
     else:
-     print '{}'.format('{}'.format(''.join(text)))
+     print ('{}'.format('{}'.format(''.join(text))))
     
 def main():
   if msg:
