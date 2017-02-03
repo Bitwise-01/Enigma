@@ -17,6 +17,8 @@ It's used for decrypting. Save the key or memorize it, because without it you ca
 
 6) this program is only for TEXT
 
+7) beware of what pin you use, because some pins will not encrypt our message, for example pin: 26
+
 # Usage: Enigma.py [-h] [-f FILE] [-o OUTPUT] [-m MSG] [--lock] [--unlock] key
 
 # Demo
@@ -34,4 +36,14 @@ It's used for decrypting. Save the key or memorize it, because without it you ca
 # Decrypt & Save:
  Input: python Enigma.py -o save_to_file -m ruvbymyhvt --unlock 62
 
+  # Read File, Encrypt & Display:
+  Input: python Enigma.py -f filename --lock 45
   
+  # Read File, Decrypt & Display:
+  Input: python Enigma.py -f filename --unlock 45
+  
+  # Read File, Encrypt & Save:
+  Input: python Enigma.py -f filename -o locked_file --lock 56
+  
+  # Read File, Decrypt & Save:
+  Input: python Enigma.py -f filename -o unlocked_file --unlock 45
