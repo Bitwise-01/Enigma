@@ -21,29 +21,29 @@ It's used for decrypting. Save the key or memorize it, because without it you ca
 
 # Usage: Enigma.py [-h] [-f FILE] [-o OUTPUT] [-m MSG] [--lock] [--unlock] key
 
-# Demo
+# Demos
+
 # Encrypting:
- Input: python Enigma.py -m helloworld --lock 15
- Output: wpawdhdcao
+python Enigma.py -m helloworld --lock 15
+ 
 
 # Decrypting:
- Input: python Enigma.py -m wpawdhdcao --unlock 15
- Output: helloworld
+python Enigma.py -m wpawdhdcao --unlock 15
  
 # Encrypt & Save:
- Input: python Enigma.py -o filename -m helloworld --lock 62
+python Enigma.py -o filename -m helloworld --lock 62
   
 # Decrypt & Save:
- Input: python Enigma.py -o save_to_file -m ruvbymyhvt --unlock 62
+python Enigma.py -o save_to_file -m ruvbymyhvt --unlock 62
 
-  # Read File, Encrypt & Display:
-  Input: python Enigma.py -f filename --lock 45
+# Read File, Encrypt & Display:
+python Enigma.py -f filename --lock 45
   
-  # Read File, Decrypt & Display:
-  Input: python Enigma.py -f filename --unlock 45
+# Read File, Decrypt & Display:
+python Enigma.py -f filename --unlock 45
   
-  # Read File, Encrypt & Save:
-  Input: python Enigma.py -f filename -o locked_file --lock 56
+# Read File, Encrypt & Save:
+python Enigma.py -f filename -o locked_file --lock 56
   
-  # Read File, Decrypt & Save:
-  Input: python Enigma.py -f filename -o unlocked_file --unlock 45
+# Read File, Decrypt & Save:
+python Enigma.py -f filename -o unlocked_file --unlock 45
