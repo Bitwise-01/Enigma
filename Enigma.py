@@ -7,6 +7,7 @@ from string import ascii_lowercase as alphabets
 
 class Enigma(object):
   __version__ = 1.0
+  
   def __init__(self,text=None,file=None):
    self.text = text if text else None
    self.file = file if file else None
@@ -118,7 +119,7 @@ if __name__ == '__main__':
   key = eval(args.key)
   run = Enigma(msg,_file)
  
-  # Engine Start
+  # Engine Starts
   if msg:
    run.process()
    
