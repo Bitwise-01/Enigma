@@ -5,12 +5,12 @@
 from argparse import ArgumentParser 
 from string import ascii_lowercase as alphabets
 
-class Enigma(object):
-  __version__ = 1.0
-  
-  def __init__(self,text=None,file=None):
-   self.text = text if text else None
-   self.file = file if file else None
+class Enigma(object):  
+  def __init__(self,text=None,_file=None):
+   self.file = _file
+   self.text = text 
+   self.key  = key
+   self.flip = 0
 
   def write(self,file,text):
     with open(file,'a') as write_to_file:
@@ -18,31 +18,36 @@ class Enigma(object):
   
   def fward(self,letter):
      x=alpha.index(letter.lower())
-     for i in range(key):
+     for i in range(self.key):
       x = x+1 if x != 25 else 0
       letter = alpha[x]
      return letter
 
   def bward(self,letter):
     x=alpha.index(letter.lower())
-    for i in range(key):
+    for i in range(self.key):
      x = x-1 if x != 0 else 25
      letter = alpha[x] 
     return letter
-
+ 
+  def mod(self):
+   return (self.key*17+inc)%104729
+    
   def encrypt(self,text):
     _msg=[]  
     for item in text:
-     _msg.append(self.bward(item)if n else self.fward(item))
-     self.flip()
-    return ''.join(_msg)
+     _msg.append(self.bward(item)if self.flip else self.fward(item))
+     self.flip = 0 if self.flip else 1
+     self.key  = self.mod()
+    return ''.join(_msg).lower()
 
   def decrypt(self,text):
     _msg = []
     for item in text:
-     _msg.append(self.fward(item)if n else self.bward(item))
-     self.flip()
-    return ''.join(_msg)
+     _msg.append(self.fward(item)if self.flip else self.bward(item))
+     self.flip = 0 if self.flip else 1
+     self.key  = self.mod()
+    return ''.join(_msg).lower()
 
   def process(self):
     if _encrypt:
@@ -77,32 +82,28 @@ class Enigma(object):
       else:
        print ('{}'.format('{}'.format(''.join(text))))
 
-  def flip(self):
-    global n
-    n=0 if n else 1
-    return n
- 
 if __name__ == '__main__':
   alpha = list(alphabets)
   
-  # Assign Arugments
-  User = ArgumentParser()
-  User.add_argument('key',help='lock & unlock pin')
-  User.add_argument('-f', help='file to read from ',dest='file')
-  User.add_argument('-o', help='file to write to',dest='output')
-  User.add_argument('-m', help='message to process',dest='msg')
-  User.add_argument('--lock', help='encrypt data',dest='lock',action='store_true')
-  User.add_argument('--unlock', help='decrypt data',dest='unlock',action='store_true')
-  args = User.parse_args()
+  # assign arugments
+  user = ArgumentParser()
+  user.add_argument('key',help='lock & unlock pin')
+  user.add_argument('inc',help='incremental key')
+  user.add_argument('-f', help='file to read from ',dest='file')
+  user.add_argument('-o', help='file to write to',dest='output')
+  user.add_argument('-m', help='message to process',dest='msg')
+  user.add_argument('--lock', help='encrypt data',dest='lock',action='store_true')
+  user.add_argument('--unlock', help='decrypt data',dest='unlock',action='store_true')
+  args = user.parse_args()
  
-  # Assign Variables
+  # assign variables
   msg      = args.msg
   output   = args.output
   _file    = args.file
   _encrypt = args.lock
   _decrypt = args.unlock
 
-  # Logic
+  # logic
   if _file:
    msg=None
 
@@ -115,11 +116,12 @@ if __name__ == '__main__':
   if _encrypt:
    _decrypt=None
 
-  n   = 0
+  # few configs
+  inc = eval(args.inc)
   key = eval(args.key)
   run = Enigma(msg,_file)
  
-  # Engine Starts
+  # start process
   if msg:
    run.process()
    
