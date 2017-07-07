@@ -1,8 +1,8 @@
 # Enigma
 Encryption Software
 
-# Key
-It's used for decrypting. Save the key or memorize it, because without it you can't decrypt the message
+# Key & Inc
+They are used for decrypting. Save them or memorize them, because without them you can't decrypt the message
 
 # Rules
 1) you can either read from a file (-f filname) or process a text (-m text), but not both at once.
@@ -17,33 +17,31 @@ It's used for decrypting. Save the key or memorize it, because without it you ca
 
 6) this program is only for TEXT
 
-7) beware of what pin you use, because some pins will not encrypt our message, for example pin: 26
+7) beware of what pin you use, because some pins will not encrypt your message, for example pin: 26
 
-# Usage: Enigma.py [-h] [-f FILE] [-o OUTPUT] [-m MSG] [--lock] [--unlock] key
+# usage: Enigma.py [-h] [-f FILE] [-o OUTPUT] [-m MSG] [--lock] [--unlock] key inc
 
 # Demos
-
 # Encrypting:
-python Enigma.py -m helloworld --lock 15
+python Enigma.py -m helloworld --lock 17 3
  
-
 # Decrypting:
-python Enigma.py -m wpawdhdcao --unlock 15
+python Enigma.py -m yymrglwnr --unlock 17 3
  
 # Encrypt & Save:
-python Enigma.py -o filename -m helloworld --lock 62
+python Enigma.py -o filename -m helloworld --lock 62 19
   
 # Decrypt & Save:
-python Enigma.py -o save_to_file -m ruvbymyhvt --unlock 62
+python Enigma.py -o save_to_file -m rxtostvmws --unlock 62 19
 
 # Read File, Encrypt & Display:
-python Enigma.py -f filename --lock 45
+python Enigma.py -f filename --lock 46 13
   
 # Read File, Decrypt & Display:
-python Enigma.py -f filename --unlock 45
+python Enigma.py -f filename --unlock 46 13
   
 # Read File, Encrypt & Save:
-python Enigma.py -f filename -o locked_file --lock 56
+python Enigma.py -f filename -o locked_file --lock 58 23
   
 # Read File, Decrypt & Save:
-python Enigma.py -f filename -o unlocked_file --unlock 56
+python Enigma.py -f filename -o unlocked_file --unlock 56 23
