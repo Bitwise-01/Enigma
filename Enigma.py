@@ -31,26 +31,26 @@ class Enigma(object):
     return letter
  
   def mod(self):
-   return (self.key*17+inc)%104729
+   return (self.key*17+inc+abs(self.key/inc))%104729
     
   def encrypt(self,text):
     _msg=[]  
     for item in text:
+     self.key  = self.mod()
      _msg.append(self.bward(item)if self.flip else self.fward(item))
      self.flip = 0 if self.flip else 1
-     self.key  = self.mod()
     return ''.join(_msg).lower()
 
   def decrypt(self,text):
     _msg = []
     for item in text:
+     self.key  = self.mod()
      _msg.append(self.fward(item)if self.flip else self.bward(item))
      self.flip = 0 if self.flip else 1
-     self.key  = self.mod()
     return ''.join(_msg).lower()
 
   def process(self):
-    if _encrypt:
+    if _encrypt: 
      if output:
       self.write(output,self.encrypt(self.text))
      else:
